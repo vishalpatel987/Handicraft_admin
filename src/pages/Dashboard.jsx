@@ -1,7 +1,7 @@
 // File: admin/src/pages/Dashboard.jsx
 import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-// import { motion } from 'framer-motion'; // Unused import removed
+import { motion } from 'framer-motion';
 import { 
   TrendingUp, 
   TrendingDown, 
@@ -12,7 +12,8 @@ import {
   AlertTriangle,
   Calendar,
   BarChart3,
-  PieChart
+  PieChart,
+  RefreshCw
 } from 'lucide-react';
 import apiService from '../services/api';
 
@@ -59,6 +60,7 @@ const Dashboard = () => {
     paymentMethodBreakdown: {}
   });
   const [showRevenueModal, setShowRevenueModal] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     fetchStats();
@@ -66,6 +68,23 @@ const Dashboard = () => {
     fetchStockSummary();
     fetchRevenueAnalytics();
   }, [selectedPeriod, fetchRevenueAnalytics, fetchSalesAnalytics]);
+
+  // Refresh function
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    try {
+      await Promise.all([
+        fetchStats(),
+        fetchSalesAnalytics(),
+        fetchStockSummary(),
+        fetchRevenueAnalytics()
+      ]);
+    } catch (err) {
+      console.error('Error refreshing dashboard:', err);
+    } finally {
+      setRefreshing(false);
+    }
+  };
 
   const fetchStats = async () => {
     try {
@@ -195,8 +214,8 @@ const Dashboard = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">Admin Dashboard</h1>
         
-        {/* Period Selector */}
-        <div className="flex gap-2">
+        {/* Period Selector and Refresh Button */}
+        <div className="flex gap-2 items-center">
           {['daily', 'monthly', 'yearly'].map(period => (
             <button
               key={period}
@@ -210,6 +229,20 @@ const Dashboard = () => {
               {period.charAt(0).toUpperCase() + period.slice(1)}
             </button>
           ))}
+          
+          {/* Refresh Button */}
+          <button
+            onClick={handleRefresh}
+            disabled={refreshing || loading}
+            className="px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gradient-to-r from-green-600 to-green-700 text-white hover:from-green-700 hover:to-green-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 shadow-lg border border-green-800"
+            title="Refresh Dashboard"
+          >
+            <RefreshCw 
+              size={20} 
+              className={refreshing ? 'animate-spin' : ''} 
+            />
+            <span className="font-semibold">Refresh</span>
+          </button>
         </div>
       </div>
 
