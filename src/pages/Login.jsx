@@ -168,8 +168,8 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-3">
+      <div className="w-full max-w-sm">
         {/* Admin Status Alert */}
         {/* Admin Status Message - Hidden */}
         {/* {adminStatus && (
@@ -186,21 +186,21 @@ const Login = () => {
         )} */}
 
         {/* Login/Registration Card */}
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-12 text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-full mb-4">
-              <img src="/logo.png" alt="Riko Admin Logo" className="w-12 h-12 rounded-full shadow" />
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-5 py-6 text-center">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-white bg-opacity-20 rounded-full mb-2.5">
+              <img src="/logo.png" alt="Riko Admin Logo" className="w-9 h-9 rounded-full shadow" />
             </div>
-            <h1 className="text-2xl font-bold text-white mb-2">Riko Admin</h1>
-            <p className="text-blue-100">
+            <h1 className="text-lg font-bold text-white mb-1.5">Riko Admin</h1>
+            <p className="text-sm text-blue-100">
               {isRegistrationMode ? 'Create your admin account' : 'Sign in to manage your store'}
             </p>
           </div>
 
           {/* Form */}
-          <div className="px-8 py-8">
-            <form onSubmit={isRegistrationMode ? handleRegistration : handleLogin} className="space-y-6">
+          <div className="px-5 py-5">
+            <form onSubmit={isRegistrationMode ? handleRegistration : handleLogin} className="space-y-4">
               {error && (
                 <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-center space-x-2">
                   <div className="w-2 h-2 bg-red-500 rounded-full"></div>
@@ -217,7 +217,7 @@ const Login = () => {
 
               {/* Username Field - Only for registration */}
               {isRegistrationMode && (
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   <label htmlFor="username" className="block text-sm font-semibold text-gray-700">
                     Username *
                   </label>
@@ -227,7 +227,7 @@ const Login = () => {
                       id="username"
                       type="text"
                       placeholder="Enter your username"
-                      className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                      className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-sm"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       required
@@ -240,7 +240,7 @@ const Login = () => {
               )}
 
               {/* Email Field */}
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 <label htmlFor="email" className="block text-sm font-semibold text-gray-700">
                   Email *
                 </label>
@@ -250,7 +250,7 @@ const Login = () => {
                     id="email"
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                    className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-sm"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -259,7 +259,7 @@ const Login = () => {
               </div>
 
              {/* Password Field */}
-<div className="space-y-2 relative">
+              <div className="space-y-1.5 relative">
   <label htmlFor="password" className="block text-sm font-semibold text-gray-700">
     Password *
   </label>
@@ -269,7 +269,7 @@ const Login = () => {
       id="password"
       type={showPassword ? "text" : "password"}
       placeholder="Enter your password"
-      className="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                    className="w-full pl-10 pr-12 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-sm"
       value={password}
       onChange={(e) => setPassword(e.target.value)}
       required
@@ -303,7 +303,7 @@ const Login = () => {
               {/* Submit Button */}
               <button 
                 type="submit" 
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                 disabled={loading}
               >
                 {loading ? (
@@ -319,7 +319,7 @@ const Login = () => {
 
             {/* Toggle Mode Button */}
             {adminStatus && (
-              <div className="mt-6 text-center">
+              <div className="mt-5 text-center">
                 <button
                   type="button"
                   onClick={toggleMode}

@@ -101,8 +101,8 @@ const AdminOTPVerification = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-3">
+      <div className="w-full max-w-sm">
         {/* Back to Login Link */}
         <div className="mb-6">
           <Link 
@@ -115,16 +115,16 @@ const AdminOTPVerification = () => {
         </div>
 
         {/* OTP Verification Card */}
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-12 text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-full mb-4">
-              <Shield className="w-8 h-8 text-white" />
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-5 py-7 text-center">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-white bg-opacity-20 rounded-full mb-3">
+              <Shield className="w-7 h-7 text-white" />
             </div>
-            <h1 className="text-2xl font-bold text-white mb-2">
+            <h1 className="text-xl font-bold text-white mb-1.5">
               {step === 1 ? 'Verify OTP' : 'Set New Password'}
             </h1>
-            <p className="text-blue-100">
+            <p className="text-sm text-blue-100">
               {step === 1 
                 ? 'Enter the OTP sent to your email address'
                 : 'Enter your new password below'
@@ -133,9 +133,9 @@ const AdminOTPVerification = () => {
           </div>
 
           {/* Form */}
-          <div className="px-8 py-8">
+          <div className="px-5 py-6">
             {step === 1 ? (
-              <form onSubmit={handleOTPVerification} className="space-y-6">
+              <form onSubmit={handleOTPVerification} className="space-y-5">
                 {error && (
                   <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-start space-x-3">
                     <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
@@ -157,7 +157,7 @@ const AdminOTPVerification = () => {
                 )}
 
                 {/* Email Display */}
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   <label className="block text-sm font-semibold text-gray-700">
                     Email Address
                   </label>
@@ -167,13 +167,13 @@ const AdminOTPVerification = () => {
                       type="email"
                       value={email}
                       disabled
-                      className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl bg-gray-50 text-gray-600"
+                      className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-600 text-sm"
                     />
                   </div>
                 </div>
 
                 {/* OTP Field */}
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   <label htmlFor="otp" className="block text-sm font-semibold text-gray-700">
                     Enter OTP
                   </label>
@@ -181,7 +181,7 @@ const AdminOTPVerification = () => {
                     id="otp"
                     type="text"
                     placeholder="Enter 6-digit OTP"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-sm"
                     value={otp}
                     onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
                     required
@@ -194,7 +194,7 @@ const AdminOTPVerification = () => {
                 <button
                   type="submit"
                   disabled={loading || otp.length !== 6}
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2.5 px-5 rounded-xl text-sm font-semibold hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? (
                     <div className="flex items-center justify-center space-x-2">
@@ -219,7 +219,7 @@ const AdminOTPVerification = () => {
                 </div>
               </form>
             ) : (
-              <form onSubmit={handlePasswordReset} className="space-y-6">
+              <form onSubmit={handlePasswordReset} className="space-y-5">
                 {error && (
                   <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-start space-x-3">
                     <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
@@ -241,7 +241,7 @@ const AdminOTPVerification = () => {
                 )}
 
                 {/* New Password Field */}
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   <label htmlFor="newPassword" className="block text-sm font-semibold text-gray-700">
                     New Password
                   </label>
@@ -250,7 +250,7 @@ const AdminOTPVerification = () => {
                       id="newPassword"
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter your new password"
-                      className="w-full pl-4 pr-12 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                      className="w-full pl-4 pr-12 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-sm"
                       value={newPassword}
                       onChange={(e) => setNewPassword(e.target.value)}
                       required
@@ -269,7 +269,7 @@ const AdminOTPVerification = () => {
                 </div>
 
                 {/* Confirm Password Field */}
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-700">
                     Confirm New Password
                   </label>
@@ -278,7 +278,7 @@ const AdminOTPVerification = () => {
                       id="confirmPassword"
                       type={showConfirmPassword ? "text" : "password"}
                       placeholder="Confirm your new password"
-                      className="w-full pl-4 pr-12 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                      className="w-full pl-4 pr-12 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-sm"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       required
@@ -299,7 +299,7 @@ const AdminOTPVerification = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2.5 px-5 rounded-xl text-sm font-semibold hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? (
                     <div className="flex items-center justify-center space-x-2">

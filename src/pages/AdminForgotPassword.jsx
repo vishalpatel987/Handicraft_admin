@@ -32,8 +32,8 @@ const AdminForgotPassword = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-3">
+      <div className="w-full max-w-sm">
         {/* Back to Login Link */}
         <div className="mb-6">
           <Link 
@@ -46,21 +46,21 @@ const AdminForgotPassword = () => {
         </div>
 
         {/* Forgot Password Card */}
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-12 text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-full mb-4">
-              <Shield className="w-8 h-8 text-white" />
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-5 py-6 text-center">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-white bg-opacity-20 rounded-full mb-3">
+              <Shield className="w-7 h-7 text-white" />
             </div>
-            <h1 className="text-2xl font-bold text-white mb-2">Reset Password</h1>
-            <p className="text-blue-100">
+            <h1 className="text-xl font-bold text-white mb-1.5">Reset Password</h1>
+            <p className="text-sm text-blue-100">
               Enter your email address to receive an OTP for password reset
             </p>
           </div>
 
           {/* Form */}
-          <div className="px-8 py-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="px-5 py-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {error && (
                 <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-start space-x-3">
                   <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
@@ -82,7 +82,7 @@ const AdminForgotPassword = () => {
               )}
 
               {/* Email Field */}
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 <label htmlFor="email" className="block text-sm font-semibold text-gray-700">
                   Admin Email Address
                 </label>
@@ -92,7 +92,7 @@ const AdminForgotPassword = () => {
                     id="email"
                     type="email"
                     placeholder="Enter your admin email"
-                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                    className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-sm"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -105,7 +105,7 @@ const AdminForgotPassword = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2.5 px-5 rounded-xl text-sm font-semibold hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <div className="flex items-center justify-center space-x-2">
